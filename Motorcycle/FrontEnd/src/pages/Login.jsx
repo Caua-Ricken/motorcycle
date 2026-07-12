@@ -72,19 +72,19 @@ function Login() {
     <main className="login-page">
       <section className="login-container">
         <div className="login-info">
-          <span className="login-label">MOTORCYCLE</span>
+          <span className="login-label">BIKES PREMIUM</span>
 
-          <h1>Encontre a moto ideal para sua próxima viagem</h1>
+          <h1>Encontre a sua bike ideal</h1>
 
           <p>
-            Entre no sistema para visualizar motos, acompanhar produtos
+            Entre no sistema para visualizar bikes, acompanhar produtos
             e gerenciar as informações da loja.
           </p>
 
           <div className="login-benefits">
             <div>
               <span>✓</span>
-              <p>Catálogo de motocicletas</p>
+              <p>Catálogo de bicicletas</p>
             </div>
 
             <div>
@@ -100,7 +100,7 @@ function Login() {
         </div>
 
         <div className="login-card">
-          <div className="login-icon">🏍️</div>
+          <div className="login-icon">🚲</div>
 
           <div className="login-header">
             <h2>Faça seu login</h2>

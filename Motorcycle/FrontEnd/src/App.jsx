@@ -19,7 +19,7 @@ function App() {
     <div className="admin-layout">
       <header className="admin-header">
         <div className="header-logo">
-          <span className="logo-icon">🏍️</span>
+          <span className="logo-icon">🚲</span>
 
           <div>
             <h1>MotorCycle</h1>
@@ -28,6 +28,16 @@ function App() {
         </div>
 
         <nav className="admin-navigation">
+
+            <NavLink
+            to="hj"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
+            Dashboard
+          </NavLink>
+
           <NavLink
             to="fd"
             className={({ isActive }) =>
@@ -35,15 +45,6 @@ function App() {
             }
           >
             Produto
-          </NavLink>
-
-          <NavLink
-            to="cadastrarProduto"
-            className={({ isActive }) =>
-              isActive ? "nav-link active" : "nav-link"
-            }
-          >
-            Cadastrar produto
           </NavLink>
 
           <NavLink

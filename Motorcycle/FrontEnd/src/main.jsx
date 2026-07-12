@@ -12,7 +12,6 @@ import {
 import Login from "../src/pages/Login.jsx"
 import Loja from "../src/pages/Loja.jsx"
 import CadastrarUsuario from "../src/pages/CadastroUsuario.jsx"
-import CadastroProduto from "../src/pages/CadastrarProduto.jsx"
 
 
 const router = createBrowserRouter([
@@ -31,10 +30,6 @@ const router = createBrowserRouter([
       {
         path: 'cadastrarUsuario',
         element: <CadastrarUsuario />
-      },
-      {
-        path: 'cadastrarProduto',
-        element: <CadastroProduto />
       },
     ]
   },

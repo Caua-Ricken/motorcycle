@@ -73,12 +73,12 @@ function CadastroUsuario() {
   return (
     <main className="register-page">
       <section className="register-card">
-        <div className="register-icon">🏍️</div>
+        <div className="register-icon">🚲</div>
 
         <div className="register-header">
-          <span>MOTORCYCLE</span>
+          <span>BIKES PREIMUM</span>
           <h1>Crie sua conta</h1>
-          <p>Cadastre-se para acessar nossa loja de motocicletas.</p>
+          <p>Cadastre-se para acessar nossa loja de bikes.</p>
         </div>
 
         <form className="register-form" onSubmit={cadastrarUsuario}>
