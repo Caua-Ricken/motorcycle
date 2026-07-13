@@ -39,7 +39,7 @@ function App() {
           </NavLink>
 
           <NavLink
-            to="fd"
+            to="fe"
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"
             }
@@ -48,7 +48,7 @@ function App() {
           </NavLink>
 
           <NavLink
-            to="/app/cadastrar-categoria"
+            to="cadastroCategoria"
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"
             }
