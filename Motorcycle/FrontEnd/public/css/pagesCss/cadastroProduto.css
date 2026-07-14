@@ -1,0 +1,204 @@
+.container {
+  width: 100%;
+}
+
+/* Parte superior */
+
+.topo {
+  margin-bottom: 28px;
+  padding-bottom: 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  border-bottom: 1px solid #31473a;
+}
+
+.topo button {
+  padding: 11px 18px;
+
+  border: none;
+  border-radius: 8px;
+
+  background-color: #8fbd32;
+  color: #10200f;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  box-shadow: 0 6px 18px rgba(143, 189, 50, 0.2);
+
+  transition: 0.2s;
+}
+
+.topo button:hover {
+  background-color: #a8d348;
+  transform: translateY(-2px);
+}
+
+.topo button:active {
+  transform: translateY(0);
+}
+
+/* Mensagem de carregamento */
+
+.container > p {
+  padding: 30px;
+
+  border: 1px solid #31473a;
+  border-radius: 10px;
+
+  background-color: #10281c;
+  color: #a8d348;
+
+  text-align: center;
+  font-size: 15px;
+}
+
+/* Área dos cards */
+
+.cards {
+  width: 100%;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 22px;
+}
+
+/* Card do produto */
+
+.card {
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  border: 1px solid #31473a;
+  border-radius: 12px;
+
+  background-color: #10281c;
+
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+
+  transition: 0.2s;
+}
+
+.card:hover {
+  border-color: #8fbd32;
+
+  transform: translateY(-4px);
+
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.35);
+}
+
+/* Imagem */
+
+.imagem {
+  width: 100%;
+  height: 200px;
+
+  display: block;
+
+  object-fit: cover;
+
+  border-bottom: 1px solid #31473a;
+
+  background-color: #0d1f17;
+}
+
+/* Informações */
+
+.card h2 {
+  margin: 18px 18px 12px;
+
+  color: #ffffff;
+  font-size: 21px;
+}
+
+.card p {
+  margin: 5px 18px;
+
+  color: #b7c1ba;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.card p strong {
+  color: #a8d348;
+}
+
+/* Botões inferiores */
+
+.acoes {
+  margin-top: auto;
+  padding: 18px;
+
+  display: flex;
+  gap: 10px;
+}
+
+.acoes button {
+  flex: 1;
+
+  padding: 10px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+/* Botão editar */
+
+.acoes button:first-child {
+  border: none;
+
+  background-color: #8fbd32;
+  color: #10200f;
+}
+
+.acoes button:first-child:hover {
+  background-color: #a8d348;
+}
+
+/* Botão deletar */
+
+.acoes button:last-child {
+  border: 1px solid #d15b5b;
+
+  background-color: transparent;
+  color: #ef7777;
+}
+
+.acoes button:last-child:hover {
+  background-color: #d15b5b;
+  color: #ffffff;
+}
+
+/* Responsividade */
+
+@media (max-width: 650px) {
+  .topo {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .topo button {
+    width: 100%;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .imagem {
+    height: 220px;
+  }
+}

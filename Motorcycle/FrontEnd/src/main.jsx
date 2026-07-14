@@ -13,6 +13,7 @@ import Login from "../src/pages/Login.jsx"
 import Loja from "../src/pages/Loja.jsx"
 import CadastrarUsuario from "../src/pages/CadastroUsuario.jsx"
 import CadastroCategoria from "../src/pages/CadastroCategoria.jsx"
+import CadastroProduto from "../src/pages/CadastroProduto.jsx"
 
 
 const router = createBrowserRouter([
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: 'cadastroCategoria',
         element: <CadastroCategoria />
+      },
+      {
+        path: 'cadastroProduto',
+        element: <CadastroProduto />
       }
     ]
   },

@@ -39,7 +39,7 @@ function App() {
           </NavLink>
 
           <NavLink
-            to="fe"
+            to="cadastroProduto"
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"
             }

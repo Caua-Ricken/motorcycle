@@ -23,12 +23,6 @@ const Produto = conn.define(
       field: "pro_peso",
     },
 
-    hp: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      field: "pro_hp",
-    },
-
     preco: {
       type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
