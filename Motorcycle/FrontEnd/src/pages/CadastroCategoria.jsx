@@ -34,6 +34,33 @@ const CadastroCategoria = () => {
     }, []);
 
 
+    const deletarCategoria = async (id) => {
+        setLoading(true);
+
+        try {
+            const res = await fetch(`http://localhost:3000/api/categoria/${id}`, {
+                method: 'DELETE'
+            });
+            const data = await res.json();
+
+            if (!res.ok) {
+             alert(data.message);
+             return;
+            };
+
+            alert(data.message);
+
+        buscarCategorias();
+
+        } catch (error) {
+            console.log(error);
+            setErro(error.message);
+        } finally {
+            setLoading(false)
+        }
+    }
+
+
     return (
         <div className="categoria-page">
             <div className="categoria-header">
@@ -58,7 +85,7 @@ const CadastroCategoria = () => {
 
                         <div className="acoes">
                             <button className="btn-editar" onClick={() => { setModo("editar"), setOpen(true), setCategoria(categoria) }}>Editar</button>
-                            <button className="btn-deletar">Deletar</button>
+                            <button className="btn-deletar" onClick={() => deletarCategoria(categoria.id)}>Deletar</button>
                         </div>
                     </div>
                 ))}

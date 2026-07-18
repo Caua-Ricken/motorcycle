@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState, useEffect } from "react";
+import ModalProduto from '../components/ModalProduto';
 import "../../public/css/pagesCss/cadastroProduto.css"
 
 const CadastroProduto = () => {
@@ -29,8 +30,33 @@ const CadastroProduto = () => {
         alert(data.message);
         return;
       }
-      
+      console.log(data)
       setProdutos(data);
+
+    } catch (error) {
+      console.log("erro ao carregar dados:", error)
+
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  const deletarProduto = async (id) => {
+    setLoading(true)
+
+     try {
+      const res = await fetch(`http://localhost:3000/api/produto/${id}`, {
+        method: 'DELETE'
+      });
+      const data = await res.json();
+
+       if (!res.ok) {
+        alert(data.message);
+        return;
+      }
+        alert(data.message);
+
+        buscarProdutos();
 
     } catch (error) {
       console.log("erro ao carregar dados:", error)
@@ -64,7 +90,7 @@ const CadastroProduto = () => {
           <div className="card" key={item.id}>
 
             <img
-              src={item.imagem}
+              src={item.image}
               alt={item.nome}
               className="imagem"
             />
@@ -77,7 +103,7 @@ const CadastroProduto = () => {
 
             <p>
               <strong>Categoria:</strong>{" "}
-              {item.categoriaId}
+              {item.Categorium?.nome}
             </p>
 
             <div className="acoes">
@@ -92,7 +118,7 @@ const CadastroProduto = () => {
               </button>
 
               <button
-               
+               onClick={() => deletarProduto(item.id)}
               >
                 Deletar
               </button>
@@ -102,6 +128,8 @@ const CadastroProduto = () => {
         ))}
       </div>
     )}
+
+    <ModalProduto open={open} onClose={() => setOpen(false)} produto={produto} modo={modo} onProdutoCadastrado={buscarProdutos}/>
 
   </div>
   )

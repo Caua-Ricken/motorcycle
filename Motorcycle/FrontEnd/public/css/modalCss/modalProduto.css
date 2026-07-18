@@ -1,0 +1,156 @@
+/* Fundo do modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999;
+}
+
+/* Caixa do modal */
+.modal-produto {
+  width: 95%;
+  max-width: 520px;
+
+  background: #121b16;
+  border: 1px solid #1f5c45;
+  border-radius: 10px;
+
+  padding: 25px;
+  color: #fff;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Cabeçalho */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  margin: 0;
+  color: #46d18b;
+}
+
+/* Botão fechar */
+.btn-fechar {
+  background: none;
+  border: none;
+
+  color: #fff;
+  font-size: 28px;
+
+  cursor: pointer;
+}
+
+.btn-fechar:hover {
+  color: #46d18b;
+}
+
+/* Campos */
+.form-control {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.form-control label {
+  margin-bottom: 6px;
+  color: #b7c6be;
+}
+
+.form-control input,
+.form-control select {
+  width: 100%;
+
+  padding: 10px 12px;
+
+  background: #1b2822;
+  color: #fff;
+
+  border: 1px solid #2d6a4f;
+  border-radius: 6px;
+
+  outline: none;
+  transition: .2s;
+}
+
+.form-control input:focus,
+.form-control select:focus {
+  border-color: #46d18b;
+}
+
+/* Preview */
+.imagem-preview {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.imagem-preview p {
+  margin-bottom: 10px;
+  color: #46d18b;
+}
+
+.imagem-preview img {
+  width: 100%;
+  max-height: 220px;
+
+  object-fit: cover;
+
+  border-radius: 8px;
+  border: 1px solid #2d6a4f;
+}
+
+/* Botões */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+
+  margin-top: 20px;
+}
+
+.btn-cancelar,
+.btn-salvar {
+  border: none;
+  border-radius: 6px;
+
+  padding: 10px 18px;
+
+  font-size: 15px;
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.btn-cancelar {
+  background: #444;
+  color: #fff;
+}
+
+.btn-cancelar:hover {
+  background: #5b5b5b;
+}
+
+.btn-salvar {
+  background: #2d8f5c;
+  color: #fff;
+}
+
+.btn-salvar:hover {
+  background: #36a56b;
+}
+
+.btn-salvar:disabled,
+.btn-cancelar:disabled {
+  opacity: .6;
+  cursor: not-allowed;
+}

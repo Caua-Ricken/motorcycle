@@ -53,7 +53,7 @@ function App() {
               isActive ? "nav-link active" : "nav-link"
             }
           >
-            Cadastrar categoria
+            Categoria
           </NavLink>
 
           <NavLink
@@ -62,7 +62,7 @@ function App() {
               isActive ? "nav-link active" : "nav-link"
             }
           >
-            Cadastrar usuário
+            Usuário
           </NavLink>
 
           <NavLink
