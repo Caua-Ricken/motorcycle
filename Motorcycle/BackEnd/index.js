@@ -15,7 +15,7 @@ app.use('/api', routes);
 
 const listen = async () => {
     try {
-        await mysql.sync({alter: true});
+        await mysql.sync();
         console.log('Database connected successfully');
 
         app.listen(3000, () => {

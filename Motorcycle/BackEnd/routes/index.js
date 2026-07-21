@@ -10,4 +10,7 @@ router.use('/auth', authRoutes);
 const categoriaRoutes = require("./categoriaRoutes");
 router.use('/categoria', categoriaRoutes);
 
+const movimentacaoRoutes = require('./movimentacaoRoutes');
+router.use('/movimentacao', movimentacaoRoutes);
+
 module.exports = router;

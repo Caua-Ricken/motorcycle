@@ -35,6 +35,11 @@ const CadastroCategoria = () => {
 
 
     const deletarCategoria = async (id) => {
+        const confirmDelete = window.confirm(
+            "Deseja realmente excluir esta movimentação?"
+        );
+
+        if (!confirmDelete) return;
         setLoading(true);
 
         try {
@@ -44,13 +49,13 @@ const CadastroCategoria = () => {
             const data = await res.json();
 
             if (!res.ok) {
-             alert(data.message);
-             return;
+                alert(data.message);
+                return;
             };
 
             alert(data.message);
 
-        buscarCategorias();
+            buscarCategorias();
 
         } catch (error) {
             console.log(error);
@@ -81,7 +86,7 @@ const CadastroCategoria = () => {
                             <h3>{categoria.nome}</h3>
                         </div>
 
-                         {erro && <span className="form-error">{erro}</span>}
+                        {erro && <span className="form-error">{erro}</span>}
 
                         <div className="acoes">
                             <button className="btn-editar" onClick={() => { setModo("editar"), setOpen(true), setCategoria(categoria) }}>Editar</button>

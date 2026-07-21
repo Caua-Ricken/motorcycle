@@ -57,6 +57,15 @@ function App() {
           </NavLink>
 
           <NavLink
+            to="cadastroMovimentacao"
+            className={({ isActive }) =>
+              isActive ? "nav-link active" : "nav-link"
+            }
+          >
+            Movimentação
+          </NavLink>
+
+          <NavLink
             to="cadastrarUsuario"
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"

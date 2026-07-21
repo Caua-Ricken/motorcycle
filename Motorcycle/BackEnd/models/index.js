@@ -1,6 +1,7 @@
 const Categoria = require('./Categoria');
 const Produto = require('./Produtos');
 const Usuario = require('./Usuario');
+const Movimentacoes = require('./Movimentacoes');
 
 //categoria
 Produto.belongsTo(Categoria, {
@@ -17,8 +18,24 @@ Categoria.hasMany(Produto, {
   },
 });
 
+//movimentacao
+  Movimentacoes.belongsTo(Produto, {
+    foreignKey: {
+      name: "produtoId",
+      field: "mov_produto_id",
+    },
+  });
+  
+  Produto.hasMany(Movimentacoes, {
+    foreignKey: {
+      name: "produtoId",
+      field: "mov_produto_id",
+    },
+  });
+
 module.exports = {
     Categoria,
     Produto,
-    Usuario
+    Usuario,
+    Movimentacoes
 };

@@ -39,6 +39,11 @@ const Produto = conn.define(
       allowNull: false,
       field: "pro_image"
     },
+    estoque: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: 'pro_estoque'
+    },
     categoriaId: {
       type: DataTypes.INTEGER,
       allowNull: false,

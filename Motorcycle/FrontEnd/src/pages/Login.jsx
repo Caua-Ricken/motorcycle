@@ -38,6 +38,8 @@ function Login() {
         return;
       }
 
+      setMensagem(data.message);
+
       localStorage.setItem("token", data.token);
 
       localStorage.setItem(
@@ -45,20 +47,23 @@ function Login() {
         JSON.stringify(data.usuario)
       );
 
-      if (data.usuario.role === "admin") {
+      setTimeout(() => {
+        if (data.usuario.role === "admin") {
         navigate("/app");
         return;
-      }
+      };
 
       if (data.usuario.role === "user") {
         navigate("/loja");
         return;
-      }
+      };
 
       localStorage.removeItem("token");
       localStorage.removeItem("usuario");
 
       setMensagem("Perfil de usuário inválido");
+      }, 1500);
+
     } catch (error) {
       console.error("Erro ao conectar com o servidor:", error);
 

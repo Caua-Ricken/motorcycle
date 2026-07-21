@@ -1,0 +1,144 @@
+.movimentacao-page {
+  width: 100%;
+  padding: 30px;
+  color: #ffffff;
+}
+
+.movimentacao-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.movimentacao-header h1 {
+  color: #ffffff;
+  font-size: 2rem;
+}
+
+.movimentacao-header button {
+  padding: 12px 22px;
+
+  border: 1px solid #8fbd32;
+  border-radius: 9px;
+
+  background: #8fbd32;
+  color: #10200f;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  cursor: pointer;
+  transition: .2s;
+
+  box-shadow: 0 8px 20px rgba(143, 189, 50, 0.18);
+}
+
+.movimentacao-header button:hover {
+  background: #a8d348;
+  border-color: #a8d348;
+}
+
+.movimentacao-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  overflow: hidden;
+
+  border: 1px solid #31473a;
+  border-radius: 16px;
+
+  background: #10281c;
+
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.5);
+}
+
+.movimentacao-table thead {
+  background: #163626;
+}
+
+.movimentacao-table thead th {
+  padding: 16px;
+
+  text-align: left;
+
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 700;
+
+  border-bottom: 1px solid #31473a;
+}
+
+.movimentacao-table tbody tr {
+  transition: .2s;
+  border-bottom: 1px solid #31473a;
+}
+
+.movimentacao-table tbody tr:hover {
+  background: #1c3828;
+}
+
+.movimentacao-table tbody td {
+  padding: 16px;
+  color: #b7c1ba;
+}
+
+.movimentacao-table td:last-child {
+  display: flex;
+  gap: 10px;
+}
+
+.movimentacao-table button {
+  padding: 8px 14px;
+
+  border-radius: 8px;
+  border: none;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: .2s;
+}
+
+.movimentacao-table button:first-child {
+  background: #8fbd32;
+  color: #10200f;
+}
+
+.movimentacao-table button:first-child:hover {
+  background: #a8d348;
+}
+
+.movimentacao-table button:last-child {
+  background: #c74444;
+  color: #ffffff;
+}
+
+.movimentacao-table button:last-child:hover {
+  background: #df5b5b;
+}
+
+.movimentacao-page p {
+  margin-top: 20px;
+  color: #b7c1ba;
+}
+
+@media (max-width: 900px) {
+  .movimentacao-page {
+    padding: 15px;
+  }
+
+  .movimentacao-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+  }
+
+  .movimentacao-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+}

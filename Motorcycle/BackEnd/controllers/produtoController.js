@@ -1,4 +1,4 @@
-const {Produto, Categoria} = require("../models/index");
+const {Produto, Categoria, Movimentacoes} = require("../models/index");
 
 module.exports = {
 
@@ -7,7 +7,7 @@ module.exports = {
 
         try {
             const produto = await Produto.create({
-                nome, peso, preco, marca, image, categoriaId
+                nome, peso, preco, marca, image, categoriaId, estoque: 0
             });
 
             return res.status(201).json({
@@ -81,6 +81,16 @@ module.exports = {
 
             if (!produto) {
                 return res.status(404).json({ error: "Produto não encontrado" });
+            }
+
+            const movimentacaoVinculada = await Movimentacoes.findOne({
+                where: { produtoId: id },
+            });
+
+            if (movimentacaoVinculada) {
+                return res.status(400).json({
+                    message: "Não é possível excluir este produto, pois ele possui movimentações vinculadas.",
+                });
             }
 
             await produto.destroy();
