@@ -1,33 +1,17 @@
 import React from 'react'
 import {useState, useEffect } from "react"
 import "../../public/css/modalCss/modalProduto.css"
+import useGet from "../hooks/useGet"
 
 const ModalProduto = ({open, modo, produto, onClose, onProdutoCadastrado}) => {
 
-    const [categorias, setCategorias] = useState([]);
     const [loading, setLoading] = useState(false);
-
-
-    const buscarCategorias = async () => {
-    try {
-      const res = await fetch("http://localhost:3000/api/categoria");
-      const data = await res.json();
-
-      if (!res.ok) {
-        console.log(data.message);
-        return
-      }
-
-      setCategorias(data);
-    } catch (error) {
-      console.log("Erro ao buscar categorias:", error);
-    }
-  };
+    const {dados: categorias, erro, buscarDados} = useGet("http://localhost:3000/api/categoria");
 
 
   useEffect(() => {
     if (open) {
-      buscarCategorias();
+      buscarDados();
     }
   }, [open]);
 

@@ -1,0 +1,558 @@
+.loja-page {
+  min-height: 100vh;
+  background-color: #f4f7f5;
+  color: #10281c;
+}
+
+.loja-banner {
+  min-height: 470px;
+  padding: 70px 8%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+
+  overflow: hidden;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(10, 35, 23, 0.98),
+      rgba(16, 40, 28, 0.9)
+    ),
+    linear-gradient(135deg, #10281c, #244c35);
+
+  color: #ffffff;
+}
+
+.loja-banner-content {
+  max-width: 650px;
+  position: relative;
+  z-index: 2;
+}
+
+.loja-banner-subtitle,
+.loja-section-subtitle {
+  display: inline-block;
+  margin-bottom: 12px;
+
+  color: #a8d348;
+
+  font-size: 0.88rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+.loja-banner h1 {
+  max-width: 620px;
+  margin: 0 0 22px;
+
+  font-size: clamp(2.4rem, 5vw, 4.4rem);
+  line-height: 1.05;
+}
+
+.loja-banner p {
+  max-width: 570px;
+  margin-bottom: 32px;
+
+  color: #d7e2db;
+
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.loja-banner-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 14px 26px;
+
+  border-radius: 10px;
+
+  background-color: #a8d348;
+  color: #10281c;
+
+  font-weight: 800;
+  text-decoration: none;
+
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.loja-banner-button:hover {
+  transform: translateY(-2px);
+  background-color: #b9e255;
+}
+
+.loja-banner-decoration {
+  width: 340px;
+  height: 340px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  flex-shrink: 0;
+
+  border: 1px solid rgba(168, 211, 72, 0.25);
+  border-radius: 50%;
+
+  background-color: rgba(255, 255, 255, 0.04);
+  box-shadow:
+    0 0 0 25px rgba(255, 255, 255, 0.025),
+    0 0 0 50px rgba(255, 255, 255, 0.015);
+}
+
+.loja-banner-decoration span {
+  font-size: 10rem;
+  transform: rotate(-8deg);
+}
+
+/* CONTEÚDO */
+
+.loja-content {
+  width: min(1300px, 90%);
+  margin: 0 auto;
+  padding: 75px 0;
+}
+
+.loja-header {
+  margin-bottom: 35px;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.loja-header h2 {
+  margin: 0;
+  color: #10281c;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.loja-search {
+  width: 100%;
+  max-width: 350px;
+}
+
+.loja-search input {
+  width: 100%;
+  height: 48px;
+  padding: 0 16px;
+
+  border: 1px solid #cbd8cf;
+  border-radius: 10px;
+  outline: none;
+
+  background-color: #ffffff;
+  color: #10281c;
+
+  font-size: 0.95rem;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.loja-search input:focus {
+  border-color: #8fbd32;
+  box-shadow: 0 0 0 3px rgba(143, 189, 50, 0.18);
+}
+
+/* CARDS */
+
+.loja-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 26px;
+}
+
+.bike-card {
+  overflow: hidden;
+
+  border: 1px solid #dde5df;
+  border-radius: 16px;
+
+  background-color: #ffffff;
+  box-shadow: 0 8px 25px rgba(16, 40, 28, 0.07);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.bike-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 35px rgba(16, 40, 28, 0.13);
+}
+
+.bike-image-container {
+  height: 250px;
+  padding: 25px;
+
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #edf3ef;
+}
+
+.bike-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+
+  transition: transform 0.3s ease;
+}
+
+.bike-card:hover .bike-image {
+  transform: scale(1.05);
+}
+
+.bike-stock {
+  padding: 7px 11px;
+
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 2;
+
+  border-radius: 20px;
+
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.bike-stock.disponivel {
+  background-color: #dff0bd;
+  color: #436b10;
+}
+
+.bike-stock.indisponivel {
+  background-color: #f2d8d8;
+  color: #8b2727;
+}
+
+.bike-content {
+  padding: 23px;
+}
+
+.bike-category {
+  display: inline-block;
+  margin-bottom: 8px;
+
+  color: #6d8b78;
+
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.bike-content h3 {
+  min-height: 52px;
+  margin: 0 0 18px;
+
+  color: #10281c;
+
+  font-size: 1.35rem;
+  line-height: 1.3;
+}
+
+.bike-information {
+  padding: 15px 0;
+  margin-bottom: 20px;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+
+  border-top: 1px solid #e6ebe7;
+  border-bottom: 1px solid #e6ebe7;
+}
+
+.bike-information div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.bike-information span {
+  color: #789082;
+  font-size: 0.78rem;
+}
+
+.bike-information strong {
+  color: #294536;
+  font-size: 0.95rem;
+}
+
+.bike-card-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.bike-price {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.bike-price span {
+  color: #7b9082;
+  font-size: 0.75rem;
+}
+
+.bike-price strong {
+  color: #567e16;
+  font-size: 1.25rem;
+}
+
+.bike-button {
+  padding: 11px 16px;
+
+  border: none;
+  border-radius: 9px;
+  cursor: pointer;
+
+  background-color: #10281c;
+  color: #ffffff;
+
+  font-weight: 700;
+
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.bike-button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  background-color: #294f38;
+}
+
+.bike-button:disabled {
+  cursor: not-allowed;
+  background-color: #9aa9a0;
+}
+
+/* MENSAGENS */
+
+.loja-message {
+  min-height: 220px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 15px;
+
+  text-align: center;
+  color: #587061;
+}
+
+.loja-message button {
+  padding: 11px 18px;
+
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+
+  background-color: #10281c;
+  color: #ffffff;
+}
+
+.loja-error {
+  color: #962f2f;
+}
+
+.loja-spinner {
+  width: 38px;
+  height: 38px;
+
+  border: 4px solid #dce5df;
+  border-top-color: #8fbd32;
+  border-radius: 50%;
+
+  animation: girar 0.8s linear infinite;
+}
+
+@keyframes girar {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* BENEFÍCIOS */
+
+.loja-benefits {
+  padding: 45px 8%;
+
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+
+  background-color: #10281c;
+}
+
+.benefit-card {
+  padding: 25px;
+
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  border: 1px solid #31473a;
+  border-radius: 13px;
+
+  background-color: #162f21;
+  color: #ffffff;
+}
+
+.benefit-icon {
+  font-size: 2rem;
+}
+
+.benefit-card h3 {
+  margin: 0 0 5px;
+  color: #a8d348;
+  font-size: 1rem;
+}
+
+.benefit-card p {
+  margin: 0;
+  color: #cbd7cf;
+  font-size: 0.86rem;
+  line-height: 1.5;
+}
+
+/* RESPONSIVIDADE */
+
+@media (max-width: 1050px) {
+  .loja-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .loja-banner-decoration {
+    width: 260px;
+    height: 260px;
+  }
+
+  .loja-banner-decoration span {
+    font-size: 7rem;
+  }
+}
+
+@media (max-width: 760px) {
+  .loja-banner {
+    min-height: auto;
+    padding: 60px 6%;
+  }
+
+  .loja-banner-decoration {
+    display: none;
+  }
+
+  .loja-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .loja-search {
+    max-width: none;
+  }
+
+  .loja-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .loja-benefits {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .loja-banner {
+    padding: 50px 22px;
+  }
+
+  .loja-content {
+    width: calc(100% - 32px);
+    padding: 50px 0;
+  }
+
+  .bike-card-footer {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .bike-button {
+    width: 100%;
+  }
+}
+
+/* USUÁRIO E LOGOFF */
+
+.loja-banner {
+  position: relative;
+}
+
+.header-user {
+  position: absolute;
+  top: 24px;
+  right: 8%;
+
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  z-index: 5;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.user-info span {
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.user-info small {
+  color: #a8d348;
+  font-size: 0.78rem;
+  text-transform: capitalize;
+}
+
+.logout-button {
+  padding: 9px 16px;
+
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 8px;
+  cursor: pointer;
+
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #ffffff;
+
+  font-weight: 700;
+
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.logout-button:hover {
+  border-color: #a8d348;
+  background-color: #a8d348;
+  color: #10281c;
+}

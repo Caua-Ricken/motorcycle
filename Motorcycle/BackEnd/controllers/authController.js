@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const {Usuario} = require("../models/index");
+const {Op} = require("sequelize");
 
 const JWT_SECRET = "dZiz1sr2HYGCE9Nn2WRTfTCbc1wFLAsZANuGkPG4mJg";
 
@@ -8,16 +9,21 @@ module.exports = {
 
 async login(req, res) {
   try {
-    const { email, senha } = req.body;
+    const { login, senha } = req.body;
 
-    if (!email || !senha) {
+    if (!login || !senha) {
       return res.status(400).json({
         message: "E-mail e senha são obrigatórios",
       });
     }
 
     const usuario = await Usuario.findOne({
-      where: { email },
+      where: { 
+        [Op.or]: [
+          {email: login},
+          {nome: login}
+        ]
+       },
     });
 
     if (!usuario) {

@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const JWT_SECRET = "mdZiz1sr2HYGCE9Nn2WRTfTCbc1wFLAsZANuGkPG4mJg";
+const JWT_SECRET = "dZiz1sr2HYGCE9Nn2WRTfTCbc1wFLAsZANuGkPG4mJg";
 
 function verificarToken(req, res, next) {
   const authHeader = req.headers.authorization;

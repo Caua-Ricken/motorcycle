@@ -15,6 +15,7 @@ import CadastrarUsuario from "../src/pages/CadastroUsuario.jsx"
 import CadastroCategoria from "../src/pages/CadastroCategoria.jsx"
 import CadastroProduto from "../src/pages/CadastroProduto.jsx"
 import CadastroMovimentacao from "../src/pages/CadastroMovimentacao.jsx"
+import Detalhes from "../src/pages/Detalhes.jsx" 
 
 
 const router = createBrowserRouter([
@@ -51,6 +52,10 @@ const router = createBrowserRouter([
   {
     path: '/loja',
     element: <Loja />
+  },
+  {
+    path: '/detalhes/:id',
+    element: <Detalhes />
   }
 ])
 

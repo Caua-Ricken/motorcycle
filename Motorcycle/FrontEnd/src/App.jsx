@@ -9,6 +9,11 @@ function App() {
   );
 
   const logout = () => {
+    const confirmExit = window.confirm(
+            "Deseja realmente sair?"
+        );
+        if (!confirmExit) return;
+
     localStorage.removeItem("token");
     localStorage.removeItem("usuario");
 
@@ -40,6 +45,7 @@ function App() {
 
           <NavLink
             to="cadastroProduto"
+            end
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"
             }
@@ -81,16 +87,6 @@ function App() {
             }
           >
             Logs
-          </NavLink>
-
-          <NavLink
-            to="."
-            end
-            className={({ isActive }) =>
-              isActive ? "nav-link active" : "nav-link"
-            }
-          >
-            Ver loja
           </NavLink>
         </nav>
 

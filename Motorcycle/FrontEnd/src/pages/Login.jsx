@@ -5,16 +5,19 @@ import "../../public/css/pagesCss/login.css";
 function Login() {
   const navigate = useNavigate();
 
-  const [email, setEmail] = useState("");
+  const [login, setLogin] = useState("");
   const [senha, setSenha] = useState("");
   const [mensagem, setMensagem] = useState("");
   const [loading, setLoading] = useState(false);
+  const [sucesso, setSucesso] = useState(false);
+
 
   const fazerLogin = async (e) => {
     e.preventDefault();
 
     setMensagem("");
     setLoading(true);
+    setSucesso(false);
 
     try {
       const res = await fetch(
@@ -25,7 +28,7 @@ function Login() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            email,
+            login,
             senha,
           }),
         }
@@ -38,6 +41,7 @@ function Login() {
         return;
       }
 
+      setSucesso(true);
       setMensagem(data.message);
 
       localStorage.setItem("token", data.token);
@@ -115,14 +119,14 @@ function Login() {
 
           <form onSubmit={fazerLogin} className="login-form">
             <div className="form-control">
-              <label htmlFor="email">E-mail</label>
+              <label htmlFor="email">E-mail / Usuário</label>
 
               <input
-                type="email"
-                id="email"
-                placeholder="Digite seu e-mail"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                id="login"
+                placeholder="Digite seu e-mail/usuário"
+                value={login}
+                onChange={(e) => setLogin(e.target.value)}
                 required
               />
             </div>
@@ -141,9 +145,15 @@ function Login() {
             </div>
 
             {mensagem && (
-              <div className="login-message">
-                {mensagem}
-              </div>
+              <div
+              className={
+                sucesso
+                  ? "register-message success"
+                  : "register-message error"
+              }
+            >
+              {mensagem}
+            </div>
             )}
 
             <button

@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import "../../public/css/pagesCss/cadastroCategoria.css";
 import ModalCategoria from "../components/ModalCategoria";
+import useGet from "../hooks/useGet"
 
 const CadastroCategoria = () => {
-    const [categorias, setCategorias] = useState([]);
     const [loading, setLoading] = useState(false);
     const [erro, setErro] = useState("");
 
@@ -11,26 +11,11 @@ const CadastroCategoria = () => {
     const [categoria, setCategoria] = useState("");
     const [modo, setModo] = useState("");
 
+    const {dados: categorias, buscarDados} = useGet("http://localhost:3000/api/categoria");
 
-    const buscarCategorias = async () => {
-        setLoading(true);
-        setErro("");
-
-        try {
-            const res = await fetch("http://localhost:3000/api/categoria");
-            const data = await res.json();
-
-            setCategorias(data);
-        } catch (error) {
-            console.log(error);
-            setErro(error.message);
-        } finally {
-            setLoading(false)
-        }
-    };
 
     useEffect(() => {
-        buscarCategorias();
+        buscarDados();
     }, []);
 
 
@@ -55,7 +40,7 @@ const CadastroCategoria = () => {
 
             alert(data.message);
 
-            buscarCategorias();
+            buscarDados();
 
         } catch (error) {
             console.log(error);
@@ -95,7 +80,7 @@ const CadastroCategoria = () => {
                     </div>
                 ))}
             </div>
-            <ModalCategoria open={open} onClose={() => setOpen(false)} modo={modo} categoria={categoria} onSalvar={buscarCategorias} />
+            <ModalCategoria open={open} onClose={() => setOpen(false)} modo={modo} categoria={categoria} onSalvar={buscarDados} />
         </div>
     );
 };

@@ -15,11 +15,10 @@ const useGet = (url) => {
             const data = await res.json();
 
             if(!res.ok) {
-                throw new Error(data.message || "Erro ao buscar usuário")
+                setErro(data.message || "Erro ao buscar usuário")
             };
 
             console.log(data)
-
             setDados(data);
             
         } catch (error) {

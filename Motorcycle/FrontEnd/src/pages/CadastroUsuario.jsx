@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../../public/css/pagesCss/cadastroUsuario.css";
+import usePost from "../hooks/usePost"
 
 function CadastroUsuario() {
   const [nome, setNome] = useState("");
@@ -10,7 +11,8 @@ function CadastroUsuario() {
 
   const [mensagem, setMensagem] = useState("");
   const [sucesso, setSucesso] = useState(false);
-  const [loading, setLoading] = useState(false);
+
+  const { enviarDados, loading, erro } = usePost();
 
   const cadastrarUsuario = async (e) => {
     e.preventDefault();
@@ -28,46 +30,31 @@ function CadastroUsuario() {
       return;
     }
 
-    setLoading(true);
+    const dadosPost = {
+      nome,
+      email,
+      senha,
+      role
+    };
 
-    try {
-      const res = await fetch(
-        "http://localhost:3000/api/auth/cadastrar",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            nome,
-            email,
-            senha,
-            role,
-          }),
-        }
-      );
+    const res = await enviarDados(
+      "http://localhost:3000/api/auth/cadastrar",
+      dadosPost,
+      "POST"
+    );
 
-      const data = await res.json();
-
-      if (!res.ok) {
-        setMensagem(data.message || "Erro ao cadastrar usuário");
-        return;
-      }
-
-      setMensagem(data.message || "Usuário cadastrado com sucesso");
-      setSucesso(true);
-
-      setNome("");
-      setEmail("");
-      setSenha("");
-      setRole("");
-      setConfirmarSenha("");
-    } catch (error) {
-      console.error("Erro ao cadastrar:", error);
-      setMensagem("Erro ao conectar com o servidor");
-    } finally {
-      setLoading(false);
+    if (!res) {
+      return;
     }
+
+    setMensagem(res.message || "Usuário cadastrado com sucesso");
+    setSucesso(true);
+
+    setNome("");
+    setEmail("");
+    setSenha("");
+    setRole("");
+    setConfirmarSenha("");
   };
 
   return (
