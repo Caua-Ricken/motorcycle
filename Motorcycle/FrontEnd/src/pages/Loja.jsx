@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {useNavigate} from "react-router-dom"
+import {useNavigate, Link} from "react-router-dom"
 import useGet from "../hooks/useGet"
 import "../../public/css/pagesCss/loja.css";
 
@@ -80,6 +80,9 @@ const Loja = () => {
             <span className="loja-section-subtitle">Nossos produtos</span>
             <h2>Bicicletas disponíveis</h2>
           </div>
+          <Link to="/loja/carrinho">
+  Ver carrinho
+</Link>
 
           <div className="loja-search">
             <input
@@ -167,7 +170,7 @@ const Loja = () => {
                     <button
                       className="bike-button"
                       disabled={produto.estoque <= 0}
-                      onClick={() => navigate(`/detalhes/${produto.id}`)}
+                      onClick={() => navigate(`/loja/detalhes/${produto.id}`)}
                     >
                       {produto.estoque > 0 ? "Ver detalhes" : "Sem estoque"}
                     </button>

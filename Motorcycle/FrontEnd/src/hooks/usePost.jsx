@@ -3,12 +3,10 @@ import { useState } from "react";
 const usePost = () => {
   const [loading, setLoading] = useState(false);
   const [erro, setErro] = useState("");
-  const [resposta, setResposta] = useState(null);
 
   const enviarDados = async (url, dados, metodo = 'POST') => {
     setLoading(true);
     setErro("");
-    setResposta(null);
 
     try {
       const response = await fetch(url, {
@@ -26,11 +24,9 @@ const usePost = () => {
         alert(data.message);
 
         return null;
-      }
+      };
 
-      setResposta(data);
       alert(data.message);
-      
       return data;
 
     } catch (error) {
@@ -45,7 +41,6 @@ const usePost = () => {
     enviarDados,
     loading,
     erro,
-    resposta,
   };
 };
 

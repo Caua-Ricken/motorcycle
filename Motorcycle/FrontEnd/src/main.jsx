@@ -2,6 +2,7 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
+import { CarrinhoContextProvider } from './context/CarrinhoContext.jsx'
 
 import {
   createBrowserRouter,
@@ -16,6 +17,7 @@ import CadastroCategoria from "../src/pages/CadastroCategoria.jsx"
 import CadastroProduto from "../src/pages/CadastroProduto.jsx"
 import CadastroMovimentacao from "../src/pages/CadastroMovimentacao.jsx"
 import Detalhes from "../src/pages/Detalhes.jsx" 
+import Carrinho from "../src/pages/Carrinho.jsx"
 
 
 const router = createBrowserRouter([
@@ -54,13 +56,19 @@ const router = createBrowserRouter([
     element: <Loja />
   },
   {
-    path: '/detalhes/:id',
+    path: '/loja/detalhes/:id',
     element: <Detalhes />
-  }
+  },
+  {
+    path: '/loja/carrinho',
+    element: <Carrinho />
+  },
 ])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <CarrinhoContextProvider>
+      <RouterProvider router={router} />
+    </CarrinhoContextProvider>
   </StrictMode>,
 )

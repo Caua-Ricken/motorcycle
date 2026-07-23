@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import useGet from "../hooks/useGet";
+import { useCarrinhoContext } from "../hooks/useCarrinhoContext";
 import "../../public/css/pagesCss/detalhes.css";
 
 const Detalhes = () => {
     const { id } = useParams();
     const navigate = useNavigate();
     const [quantidade, setQuantidade] = useState(1);
+
+    const { adicionarProduto } = useCarrinhoContext();
 
     const {
         dados: produto,
@@ -34,7 +37,9 @@ const Detalhes = () => {
     };
 
     const adicionarCarrinho = () => {
+        adicionarProduto(produto, quantidade)
         alert(`${quantidade} unidade(s) adicionada(s) ao carrinho`);
+        console.log(produto, quantidade)
     };
 
     return (

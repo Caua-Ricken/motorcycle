@@ -38,8 +38,6 @@ module.exports = {
 
             res.status(201).json({
                 message: "Movimentação criada e estoque atualizado com sucesso",
-                movimentacao: novaMovimentacao,
-                estoqueAtual: produto.estoque,
             });
         } catch (error) {
             console.error("Erro ao criar movimentação:", error);
