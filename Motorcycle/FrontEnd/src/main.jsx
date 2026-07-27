@@ -18,7 +18,10 @@ import CadastroProduto from "../src/pages/CadastroProduto.jsx"
 import CadastroMovimentacao from "../src/pages/CadastroMovimentacao.jsx"
 import Detalhes from "../src/pages/Detalhes.jsx" 
 import Carrinho from "../src/pages/Carrinho.jsx"
+import CadastroPagamento from "../src/pages/CadastroPagamento.jsx"
 
+import ModalCarrinho from "../src/components/ModalCarrinho.jsx"
+import ModalPagamento from "../src/components/ModalPagamento.jsx"
 
 const router = createBrowserRouter([
   {
@@ -49,6 +52,10 @@ const router = createBrowserRouter([
         path: 'cadastroMovimentacao',
         element: <CadastroMovimentacao />
       },
+      {
+        path: 'cadastroPagamento',
+        element: <CadastroPagamento />
+      }
     ]
   },
   {
@@ -61,7 +68,21 @@ const router = createBrowserRouter([
   },
   {
     path: '/loja/carrinho',
-    element: <Carrinho />
+    element: <Carrinho />,
+    children: [
+      {
+        index: true,
+        element: <ModalCarrinho />
+      },
+      {
+        path: 'pagamento',
+        element: <ModalPagamento />
+      },
+      {
+        path: 'conclusao'
+
+      }
+    ]
   },
 ])
 

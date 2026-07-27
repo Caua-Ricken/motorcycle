@@ -1,0 +1,77 @@
+.step-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin: 30px 0;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 120px;
+}
+
+.circle {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #d9d9d9;
+  color: #666;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  transition: .3s;
+}
+
+.step span {
+  margin-top: 8px;
+  font-size: 14px;
+  color: #666;
+  font-weight: 500;
+}
+
+.line {
+  width: 100px;
+  height: 4px;
+  background: #d9d9d9;
+  margin: 0 10px;
+  border-radius: 10px;
+  transition: .3s;
+}
+
+/* Etapa ativa */
+
+.step.active .circle {
+  background: #2e7d32;
+  color: #fff;
+}
+
+.step.active span {
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.line.active {
+  background: #2e7d32;
+}
+
+/* Responsivo */
+
+@media (max-width: 768px) {
+  .step-container {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .line {
+    display: none;
+  }
+
+  .step {
+    min-width: 90px;
+  }
+}

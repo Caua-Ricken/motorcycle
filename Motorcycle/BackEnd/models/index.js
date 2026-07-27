@@ -2,6 +2,7 @@ const Categoria = require('./Categoria');
 const Produto = require('./Produtos');
 const Usuario = require('./Usuario');
 const Movimentacoes = require('./Movimentacoes');
+const Pagamento = require('./Pagamento');
 
 //categoria
 Produto.belongsTo(Categoria, {
@@ -37,5 +38,6 @@ module.exports = {
     Categoria,
     Produto,
     Usuario,
-    Movimentacoes
+    Movimentacoes,
+    Pagamento
 };
