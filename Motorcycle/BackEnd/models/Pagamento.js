@@ -36,7 +36,7 @@ const Pagamento = conn.define(
             field: "pag_descricao",
         },
 
-        parcelasMaximas: {
+        parcelasMaxima: {
             type: DataTypes.INTEGER,
             allowNull: false,
             defaultValue: 1,
@@ -45,17 +45,23 @@ const Pagamento = conn.define(
                 min: 1,
             },
         },
-        icone: {
-            type: DataTypes.STRING(255),
-            allowNull: true,
-            field: "pag_icone",
-        },
+
         ativo: {
             type: DataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: true,
             field: "pag_ativo",
         },
+
+        vencimento: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: 1,
+            field: "pag_vencimento",
+            validate: {
+                min: 1,
+            },
+        }
     },
     {
         tableName: "pagamentos",

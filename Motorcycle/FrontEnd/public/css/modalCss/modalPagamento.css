@@ -1,0 +1,214 @@
+/* Fundo do modal */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding: 20px;
+
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+}
+
+/* Caixa do modal */
+.modal-pagamento {
+  width: 95%;
+  max-width: 520px;
+  max-height: 90vh;
+
+  padding: 25px;
+
+  overflow-y: auto;
+
+  color: #ffffff;
+  background: #121b16;
+
+  border: 1px solid #1f5c45;
+  border-radius: 10px;
+
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.35);
+}
+
+/* Cabeçalho */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-bottom: 20px;
+}
+
+.modal-header h2 {
+  margin: 0;
+
+  color: #46d18b;
+  font-size: 23px;
+}
+
+.modal-header p {
+  margin: 5px 0 0;
+
+  color: #b7c6be;
+  font-size: 14px;
+}
+
+/* Botão fechar */
+.btn-fechar {
+  padding: 0;
+
+  color: #ffffff;
+  background: none;
+  border: none;
+
+  font-size: 28px;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.btn-fechar:hover {
+  color: #46d18b;
+}
+
+/* Campos */
+.form-control {
+  display: flex;
+  flex-direction: column;
+
+  margin-bottom: 16px;
+}
+
+.form-control label {
+  margin-bottom: 6px;
+
+  color: #b7c6be;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.form-control input,
+.form-control select,
+.form-control textarea {
+  width: 100%;
+  padding: 10px 12px;
+
+  color: #ffffff;
+  background: #1b2822;
+
+  border: 1px solid #2d6a4f;
+  border-radius: 6px;
+  outline: none;
+
+  font-family: inherit;
+  font-size: 14px;
+
+  box-sizing: border-box;
+  transition: 0.2s;
+}
+
+.form-control textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+.form-control input::placeholder,
+.form-control textarea::placeholder {
+  color: #76877e;
+}
+
+.form-control input:focus,
+.form-control select:focus,
+.form-control textarea:focus {
+  border-color: #46d18b;
+  box-shadow: 0 0 0 2px rgba(70, 209, 139, 0.15);
+}
+
+/* Opções do select */
+.form-control select option {
+  color: #ffffff;
+  background: #1b2822;
+}
+
+/* Mensagem de erro */
+.modal-error {
+  margin: 10px 0;
+  padding: 10px 12px;
+
+  color: #ffb4b4;
+  background: rgba(180, 40, 40, 0.18);
+
+  border: 1px solid #8f3535;
+  border-radius: 6px;
+
+  font-size: 14px;
+}
+
+/* Botões */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+
+  margin-top: 20px;
+}
+
+.btn-cancelar,
+.btn-salvar {
+  padding: 10px 18px;
+
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+
+  font-size: 15px;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.btn-cancelar {
+  background: #444444;
+}
+
+.btn-cancelar:hover {
+  background: #5b5b5b;
+}
+
+.btn-salvar {
+  background: #2d8f5c;
+}
+
+.btn-salvar:hover {
+  background: #36a56b;
+}
+
+.btn-salvar:disabled,
+.btn-cancelar:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+  .modal-overlay {
+    align-items: flex-start;
+    padding: 12px;
+  }
+
+  .modal-pagamento {
+    margin-top: 20px;
+    padding: 20px;
+  }
+
+  .modal-actions {
+    flex-direction: column-reverse;
+  }
+
+  .btn-cancelar,
+  .btn-salvar {
+    width: 100%;
+  }
+}

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import useGet from "../hooks/useGet";
-import usePost from "../hooks/usePost"
 import "../../public/css/pagesCss/cadastroPagamento.css"
+import ModalCadastroPagamento from "../components/ModalCadastroPagamento";
 
 const CadastroPagamento = () => {
     const [open, setOpen] = useState(false);
@@ -19,10 +19,6 @@ const CadastroPagamento = () => {
         buscarDados();
     }, []);
 
-    const {
-        enviarDados
-    } = usePost();
-
 
     const excluirPagamento = async (pagamento) => {
         const confirmar = window.confirm(
@@ -31,29 +27,61 @@ const CadastroPagamento = () => {
 
         if (!confirmar) return;
 
-        const resposta = await enviarDados(
-            `http://localhost:3000/api/pagamento/${pagamento.id}`,
-            null,
-            "DELETE"
-        );
+        try {
+            const response = await fetch(
+                `http://localhost:3000/api/pagamento/${pagamento.id}`,
+                {
+                    method: "DELETE",
+                }
+            );
 
-        if (resposta) {
+            const data = await response.json();
+
+            if (!response.ok) {
+                alert(data.message);
+                return;
+            }
+
+            alert(data.message);
+
             buscarDados();
+        } catch (error) {
+            console.error("Erro ao excluir pagamento:", error);
+
+            alert("Erro ao excluir a forma de pagamento.");
         }
     };
 
 
     const alterarStatus = async (pagamento) => {
-        const resposta = await enviarDados(
-            `http://localhost:3000/api/pagamento/${pagamento.id}`,
-            {
-                ativo: !pagamento.ativo,
-            },
-            "PUT"
-        );
+        try {
+            const response = await fetch(
+                `http://localhost:3000/api/pagamento/status/${pagamento.id}`,
+                {
+                    method: "PUT",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        ativo: !pagamento.ativo,
+                    }),
+                }
+            );
 
-        if (resposta) {
+            const data = await response.json();
+
+            if (!response.ok) {
+                alert(data.message);
+                return;
+            }
+
+            alert(data.message);
+
             buscarDados();
+        } catch (error) {
+            console.error("Erro ao alterar status:", error);
+
+            alert("Erro ao alterar o status da forma de pagamento.");
         }
     };
 
@@ -94,6 +122,7 @@ const CadastroPagamento = () => {
                             <p>Clique em cadastrar para adicionar a primeira.</p>
                         </div>
                     ) : (
+                        <div className="payment-table-wrapper">
                         <table className="payment-table">
                             <thead>
                                 <tr>
@@ -168,8 +197,11 @@ const CadastroPagamento = () => {
                                 ))}
                             </tbody>
                         </table>
+                        </div>
                     )
                 )}
+
+                <ModalCadastroPagamento open={open} onClose={() => setOpen(false)} modo={modo} pagamento={pagamentoSelecionado} onPagamentoSalvo={buscarDados} />
 
             </div>
         </main>
