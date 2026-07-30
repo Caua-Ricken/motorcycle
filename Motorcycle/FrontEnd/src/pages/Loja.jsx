@@ -80,6 +80,8 @@ const Loja = () => {
             <span className="loja-section-subtitle">Nossos produtos</span>
             <h2>Bicicletas disponíveis</h2>
           </div>
+
+          
           <Link to="/loja/carrinho">
   Ver carrinho
 </Link>

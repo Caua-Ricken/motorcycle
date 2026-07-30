@@ -12,11 +12,13 @@ const ModalConclusao = () => {
     localStorage.getItem("formaPagamento")
   );
 
+  //valor total
   const total = carrinho.reduce((acc, item) => {
     return acc + Number(item.preco) * item.quantidade;
   }, 0);
 
-  const finalizarCompra = () => {
+  //comprovante
+  const gerarComprovante = () => {
     let texto = "COMPROVANTE DE COMPRA\n\n";
 
     texto += "ITENS DA COMPRA\n";
@@ -50,7 +52,7 @@ const ModalConclusao = () => {
 
     if (formaPagamento?.tipo === "credito") {
       texto += `Parcelas: ${
-        formaPagamento.parcelas || 1
+        formaPagamento.quantidadeParcelas || 1
       }x\n`;
     }
 
@@ -79,11 +81,43 @@ const ModalConclusao = () => {
     link.click();
 
     URL.revokeObjectURL(url);
+  };
 
-    limparCarrinho();
-    localStorage.removeItem("formaPagamento");
+  //post para o BackEnd
+  const finalizarCompra = async () => {
+    try {
+      const itens = carrinho.map((item) => (
+        {
+          id: item.id,
+          quantidade: item.quantidade
+        }
+      ));
 
-    navigate("/loja");
+      const res = await fetch("http://localhost:3000/api/produto/finalizar", {
+        method: 'PUT',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({itens})
+      });
+      const data = await res.json();
+
+      if(!res.ok) {
+        alert(data.message);
+        return;
+      };
+
+      gerarComprovante();
+      limparCarrinho();
+
+      localStorage.removeItem("formaPagamento");
+      navigate("/loja")
+
+      alert(data.message);
+
+    } catch (error) {
+      console.log(error)
+    }
   };
 
   return (

@@ -1,3 +1,4 @@
+const sequelize = require("../db/mysql");
 const {Produto, Categoria, Movimentacoes} = require("../models/index");
 
 module.exports = {
@@ -129,6 +130,73 @@ async buscarById(req, res) {
         return res.status(500).json({
             message: "Erro ao buscar produto",
         });
+    }
+  },
+
+  async finalizarCompra(req, res) {
+    const { itens } = req.body;
+
+    if (!Array.isArray(itens) || itens.length === 0) {
+      return res.status(400).json({
+        message: "Nenhum produto foi informado.",
+      });
+    }
+
+    const transaction = await sequelize.transaction();
+
+    try {
+      for (const item of itens) {
+        const produto = await Produto.findByPk(item.id, {
+          transaction,
+          lock: transaction.LOCK.UPDATE,
+        });
+
+        if (!produto) {
+          await transaction.rollback();
+
+          return res.status(404).json({
+            message: `Produto com ID ${item.id} não encontrado.`,
+          });
+        }
+
+        const quantidade = Number(item.quantidade);
+
+        if (!Number.isInteger(quantidade) || quantidade <= 0) {
+          await transaction.rollback();
+
+          return res.status(400).json({
+            message: `Quantidade inválida para o produto ${produto.nome}.`,
+          });
+        }
+
+        if (produto.estoque < quantidade) {
+          await transaction.rollback();
+
+          return res.status(400).json({
+            message: `Estoque insuficiente para ${produto.nome}. Estoque disponível: ${produto.estoque}.`,
+          });
+        }
+
+        produto.estoque -= quantidade;
+
+        await produto.save({
+          transaction,
+        });
+      }
+
+      await transaction.commit();
+
+      return res.status(200).json({
+        message: "Compra finalizada e estoque atualizado com sucesso.",
+      });
+    } catch (error) {
+      await transaction.rollback();
+
+      console.error(error);
+
+      return res.status(500).json({
+        message: "Erro ao finalizar a compra.",
+      });
     }
   },
 }
