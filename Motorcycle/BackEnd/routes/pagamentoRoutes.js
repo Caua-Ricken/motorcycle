@@ -12,5 +12,7 @@ router.put('/:id', pagamentoController.editarPagamento);
 
 router.put('/status/:id', pagamentoController.alterarStatus);
 
+router.get('/ativo', pagamentoController.buscarPagamentoAtivo);
+
 
 module.exports = router;

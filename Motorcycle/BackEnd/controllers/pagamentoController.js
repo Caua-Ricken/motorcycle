@@ -194,4 +194,22 @@ async alterarStatus(req, res) {
   }
 },
 
+async buscarPagamentoAtivo(req, res) {
+  try {
+    const pagamentos = await Pagamento.findAll({
+      where: {
+        ativo: true,
+      },
+    });
+
+    return res.status(200).json(pagamentos);
+  } catch (error) {
+    console.error(error);
+
+    return res.status(500).json({
+      message: "Erro ao buscar formas de pagamento.",
+    });
+  }
+},
+
 }

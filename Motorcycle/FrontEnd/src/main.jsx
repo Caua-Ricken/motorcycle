@@ -22,6 +22,7 @@ import CadastroPagamento from "../src/pages/CadastroPagamento.jsx"
 
 import ModalCarrinho from "../src/components/ModalCarrinho.jsx"
 import ModalPagamento from "../src/components/ModalPagamento.jsx"
+import ModalConclusao from './components/ModalConclusao.jsx'
 
 const router = createBrowserRouter([
   {
@@ -79,7 +80,8 @@ const router = createBrowserRouter([
         element: <ModalPagamento />
       },
       {
-        path: 'conclusao'
+        path: 'conclusao',
+        element: <ModalConclusao />
 
       }
     ]

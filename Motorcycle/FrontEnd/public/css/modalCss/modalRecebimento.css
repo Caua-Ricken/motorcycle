@@ -1,0 +1,108 @@
+.pagamento-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 30px 20px;
+}
+
+.pagamento-card {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px;
+  background-color: #ffffff;
+  border: 1px solid #31473a;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.pagamento-card h2 {
+  margin: 0 0 10px;
+  color: #244c35;
+  text-align: center;
+}
+
+.pagamento-card label {
+  color: #244c35;
+  font-weight: 600;
+}
+
+.pagamento-card select {
+  width: 100%;
+  padding: 11px;
+  border: 1px solid #31473a;
+  border-radius: 6px;
+  background-color: #ffffff;
+  font-size: 15px;
+  outline: none;
+}
+
+.pagamento-card select:focus {
+  border-color: #8fbd32;
+}
+
+.pagamento-botoes {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.pagamento-botoes button {
+  flex: 1;
+  padding: 11px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-voltar {
+  background-color: #e5e7e6;
+  color: #244c35;
+}
+
+.btn-finalizar {
+  background-color: #8fbd32;
+  color: #10281c;
+}
+
+.btn-voltar:hover {
+  background-color: #d4d8d5;
+}
+
+.btn-finalizar:hover {
+  background-color: #a8d348;
+}
+
+.btn-finalizar:disabled {
+    background-color: #cfd8dc;
+    color: #7a7a7a;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+    opacity: 0.7;
+}
+
+.btn-finalizar:disabled:hover {
+    background-color: #cfd8dc;
+    color: #7a7a7a;
+    box-shadow: none;
+    transform: none;
+}
+
+@media (max-width: 500px) {
+  .pagamento-container {
+    padding: 20px 10px;
+  }
+
+  .pagamento-card {
+    padding: 20px;
+  }
+
+  .pagamento-botoes {
+    flex-direction: column;
+  }
+}

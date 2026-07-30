@@ -99,53 +99,105 @@
 }
 
 .cart-footer {
-    margin-top: 40px;
-    background: white;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 3px 10px rgba(0,0,0,.08);
+    margin-top: 30px;
+    padding-top: 24px;
+    border-top: 2px solid #e5e7eb;
 }
 
 .cart-footer h2 {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 20px;
+    align-items: center;
+    margin-bottom: 22px;
+    font-size: 1.4rem;
+    color: #244c35;
 }
 
-.cart-footer span {
-    color: #2e7d32;
+.cart-footer h2 span {
+    color: #8fbd32;
+    font-size: 1.7rem;
+    font-weight: 700;
 }
 
 .cart-buttons {
     display: flex;
-    justify-content: flex-end;
-    gap: 15px;
+    gap: 14px;
 }
 
-.btn-clear,
-.btn-buy {
+.cart-buttons button {
+    flex: 1;
+    padding: 14px 18px;
     border: none;
-    padding: 14px 24px;
-    border-radius: 8px;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
     cursor: pointer;
-    font-weight: bold;
-    transition: .3s;
+    transition: all .25s ease;
 }
 
+/* Voltar à loja */
+.btn-voltar-loja {
+    background: #244c35;
+    color: #fff;
+}
+
+.btn-voltar-loja:hover {
+    background: #1a3525;
+    transform: translateY(-2px);
+}
+
+/* Limpar carrinho */
 .btn-clear {
-    background: #757575;
-    color: white;
+    background: #dc2626;
+    color: #fff;
 }
 
 .btn-clear:hover {
-    background: #5b5b5b;
+    background: #b91c1c;
+    transform: translateY(-2px);
 }
 
+/* Finalizar compra */
 .btn-buy {
-    background: #2e7d32;
-    color: white;
+    background: #8fbd32;
+    color: #10281c;
+    font-weight: 700;
 }
 
 .btn-buy:hover {
-    background: #1b5e20;
+    background: #7eab2b;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(143, 189, 50, .35);
+}
+
+.cart-buttons button:active {
+    transform: scale(.98);
+}
+
+.cart-buttons button:disabled {
+    background: #d1d5db;
+    color: #6b7280;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+@media (max-width: 768px) {
+    .cart-footer h2 {
+        flex-direction: column;
+        gap: 8px;
+        text-align: center;
+    }
+
+    .cart-buttons {
+        flex-direction: column;
+    }
+
+    .cart-buttons button {
+        width: 100%;
+    }
+}
+
+.cart-words {
+    color: black;
 }

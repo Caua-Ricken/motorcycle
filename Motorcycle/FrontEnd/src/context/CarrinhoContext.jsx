@@ -58,12 +58,7 @@ useEffect(() => {
 
         //limpar carrinho
         const limparCarrinho = () => {
-            const confirmDelete = window.confirm(
-            "Deseja realmente limpar o carrinho?"
-        );
-
-        if (!confirmDelete) return;
-
+            alert("Carrinho limpado com sucesso!")
             setCarrinho([]);
         };
     

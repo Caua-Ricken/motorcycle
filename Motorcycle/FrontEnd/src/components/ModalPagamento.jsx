@@ -1,116 +1,99 @@
 import React from "react";
-import { useCarrinhoContext } from "../hooks/useCarrinhoContext";
-import "../../public/css/pagesCss/carrinho.css";
 import { useNavigate } from "react-router-dom";
+import useGet from "../hooks/useGet"
+import { useState, useEffect } from 'react'
+import "../../public/css/modalCss/modalRecebimento.css"
 
 const ModalPagamento = () => {
+  const [pagamentoSelecionado, setpagamentoSelecionado] = useState(null);
+  const [quantidadeParcelas, setQuantidadeParcelas] = useState(1);
 
-     
-   const {
-    carrinho,
-    removerCarrinho,
-    limparCarrinho,
-  } = useCarrinhoContext();
+  const {
+    dados,
+    buscarDados
+  } = useGet("http://localhost:3000/api/pagamento/ativo");
 
-  const total = carrinho.reduce((acc, item) => {
-    return acc + Number(item.preco) * item.quantidade;
-  }, 0);
+
+  const selecionarForma = (e) => {
+    const forma = dados.find((item) => item.id === Number(e.target.value));
+
+    setpagamentoSelecionado(forma);
+  }
+
+
+  const opcoesParcelas = [];
+
+  if (pagamentoSelecionado) {
+    for (
+      let i = 1; i <= pagamentoSelecionado.parcelasMaxima; i++) {
+      opcoesParcelas.push(
+        <option key={i} value={i}>
+          {i}x
+        </option>
+      );
+    }
+  };
+
+  const finalizar = () => {
+    localStorage.setItem(
+      "formaPagamento",
+      JSON.stringify({
+        ...pagamentoSelecionado,
+        quantidadeParcelas,
+      })
+    );
+
+    navigate("/loja/carrinho/conclusao");
+  };
+
 
   const navigate = useNavigate();
 
   return (
-    <main className="cart-page">
-      <div className="cart-container">
-        
-        <h1>Meu Carrinho</h1>
+    <main className="pagamento-container">
+      <div className="pagamento-card">
+        <h2>Pagamento</h2>
 
-        {carrinho.length === 0 ? (
-          <div className="cart-empty">
-            <h2>Seu carrinho está vazio</h2>
-            <p>Adicione algumas bicicletas para começar.</p>
-          </div>
-        ) : (
+        <label>Forma de pagamento</label>
+
+        <select defaultValue="" onChange={selecionarForma}>
+          <option value="">Selecione</option>
+
+          {dados.map((forma) => (
+            <option key={forma.id} value={forma.id}>
+              {forma.nome}
+            </option>
+          ))}
+        </select>
+
+        {pagamentoSelecionado?.tipo === "credito" && (
           <>
-            <div className="cart-products">
-              {carrinho.map((item) => (
-                <div className="cart-card" key={item.id}>
-                  <img src={item.image} alt={item.nome} />
+            <label>Quantidade de parcelas</label>
 
-                  <div className="cart-info">
-                    <h3>{item.nome}</h3>
-
-                    <p>Marca: {item.marca}</p>
-
-                    <p>
-                      Quantidade:
-                      <strong> {item.quantidade}</strong>
-                    </p>
-
-                    <p>
-                      Valor Unitário:
-                      <strong>
-                        {" "}
-                        {Number(item.preco).toLocaleString("pt-BR", {
-                          style: "currency",
-                          currency: "BRL",
-                        })}
-                      </strong>
-                    </p>
-
-                    <p>
-                      Subtotal:
-                      <strong>
-                        {" "}
-                        {(Number(item.preco) * item.quantidade).toLocaleString(
-                          "pt-BR",
-                          {
-                            style: "currency",
-                            currency: "BRL",
-                          }
-                        )}
-                      </strong>
-                    </p>
-                  </div>
-
-                  <button
-                    className="btn-remove"
-                    onClick={() => removerCarrinho(item.id)}
-                  >
-                    Remover
-                  </button>
-                </div>
-              ))}
-            </div>
-
-            <div className="cart-footer">
-              <h2>
-                Total:
-                <span>
-                  {total.toLocaleString("pt-BR", {
-                    style: "currency",
-                    currency: "BRL",
-                  })}
-                </span>
-              </h2>
-
-              <div className="cart-buttons">
-                <button
-                  className="btn-clear"
-                  onClick={limparCarrinho}
-                >
-                  Limpar Carrinho
-                </button>
-
-                <button className="btn-buy">
-                  Finalizar Compra
-                </button>
-              </div>
-            </div>
+            <select
+              value={quantidadeParcelas}
+              onChange={(e) => setQuantidadeParcelas(Number(e.target.value))}>
+              {opcoesParcelas}
+            </select>
           </>
         )}
 
-        <button onClick={() => navigate('pagamento')}>avançar</button>
+        <div className="pagamento-botoes">
+          <button
+            className="btn-voltar"
+            onClick={() => navigate("/loja/carrinho")}
+          >
+            Voltar ao carrinho
+          </button>
 
+          <button
+            className="btn-finalizar"
+            onClick={finalizar}
+            disabled={!pagamentoSelecionado}
+          >
+            Finalizar
+          </button>
+        </div>
       </div>
     </main>
   );
