@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {useNavigate, Link} from "react-router-dom"
 import useGet from "../hooks/useGet"
+import MessageExit from "../components/MessageExit";
 import "../../public/css/pagesCss/loja.css";
 
 const Loja = () => {
@@ -10,11 +11,10 @@ const Loja = () => {
     localStorage.getItem("usuario")
   );
 
+
+  const [open, setOpen] = useState(false);
+
   const logout = () => {
-    const confirmExit = window.confirm(
-      "Deseja realmente sair?"
-    );
-    if (!confirmExit) return;
 
     localStorage.removeItem("token");
     localStorage.removeItem("usuario");
@@ -67,7 +67,7 @@ const Loja = () => {
           <button
             type="button"
             className="logout-button"
-            onClick={logout}
+            onClick={() => setOpen(true)}
           >
             Sair
           </button>
@@ -82,7 +82,7 @@ const Loja = () => {
           </div>
 
           
-          <Link to="/loja/carrinho">
+          <Link to="/loja/carrinho" className="loja-cart-button">
   Ver carrinho
 </Link>
 
@@ -209,6 +209,8 @@ const Loja = () => {
           </div>
         </div>
       </section>
+
+      <MessageExit open={open} onConfirm={logout} onCancel={() => setOpen(false)} />
     </main>
   );
 };

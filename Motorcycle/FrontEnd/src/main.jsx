@@ -19,6 +19,8 @@ import CadastroMovimentacao from "../src/pages/CadastroMovimentacao.jsx"
 import Detalhes from "../src/pages/Detalhes.jsx" 
 import Carrinho from "../src/pages/Carrinho.jsx"
 import CadastroPagamento from "../src/pages/CadastroPagamento.jsx"
+import ErrorPage from "../src/pages/ErrorPage.jsx"
+import Dashboard from "../src/pages/Dashboard.jsx"
 
 import ModalCarrinho from "../src/components/ModalCarrinho.jsx"
 import ModalPagamento from "../src/components/ModalPagamento.jsx"
@@ -28,6 +30,7 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <Login />,
+    errorElement: <ErrorPage />
   },
   {
     path: '/app',
@@ -35,7 +38,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Loja />
+        element: <Dashboard />
       },
       {
         path: 'cadastrarUsuario',

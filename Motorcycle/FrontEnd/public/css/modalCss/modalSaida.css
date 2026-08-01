@@ -1,0 +1,74 @@
+.modal-saida-overlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.modal-saida {
+  width: 400px;
+  max-width: 90%;
+
+  background: #fff;
+  border-radius: 12px;
+
+  padding: 24px;
+
+  text-align: center;
+
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-saida h2 {
+  margin-bottom: 12px;
+  color: #10281c;
+}
+
+.modal-saida p {
+  margin-bottom: 24px;
+  color: #555;
+}
+
+.modal-saida-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.btn-cancelar,
+.btn-sair {
+  padding: 10px 24px;
+
+  border: none;
+  border-radius: 8px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.btn-cancelar {
+  background: #d9d9d9;
+  color: #333;
+}
+
+.btn-cancelar:hover {
+  background: #c6c6c6;
+}
+
+.btn-sair {
+  background: #c62828;
+  color: #fff;
+}
+
+.btn-sair:hover {
+  background: #b71c1c;
+}

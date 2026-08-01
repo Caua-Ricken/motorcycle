@@ -1,10 +1,12 @@
 import { NavLink, Outlet, useNavigate } from "react-router-dom";
 import "./App.css";
+import MessageExit from "./components/MessageExit";
 import { useEffect, useState } from "react";
 
 function App() {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const validarAdm = async () => {
@@ -54,10 +56,6 @@ function App() {
   );
 
   const logout = () => {
-    const confirmExit = window.confirm(
-            "Deseja realmente sair?"
-        );
-        if (!confirmExit) return;
 
     localStorage.removeItem("token");
     localStorage.removeItem("usuario");
@@ -80,7 +78,8 @@ function App() {
         <nav className="admin-navigation">
 
             <NavLink
-            to="hj"
+            to='.'
+            end
             className={({ isActive }) =>
               isActive ? "nav-link active" : "nav-link"
             }
@@ -133,15 +132,6 @@ function App() {
           >
             Forma Pagamento
           </NavLink>
-
-          <NavLink
-            to="/app/logs"
-            className={({ isActive }) =>
-              isActive ? "nav-link active" : "nav-link"
-            }
-          >
-            Logs
-          </NavLink>
         </nav>
 
         <div className="header-user">
@@ -153,7 +143,7 @@ function App() {
           <button
             type="button"
             className="logout-button"
-            onClick={logout}
+            onClick={() => setOpen(true)}
           >
             Sair
           </button>
@@ -163,6 +153,8 @@ function App() {
       <main className="admin-main">
         <Outlet />
       </main>
+
+      <MessageExit open={open} onConfirm={logout} onCancel={() => setOpen(false)} />
     </div>
   );
 }

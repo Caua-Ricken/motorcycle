@@ -39,7 +39,7 @@ const Detalhes = () => {
     const adicionarCarrinho = () => {
         adicionarProduto(produto, quantidade)
         console.log(produto, quantidade);
-        alert(`${quantidade} unidade(s) adicionada(s) ao carrinho`);
+        alert(`${quantidade} unidade(s) adicionada(s) de ${produto.nome} ao carrinho`);
         console.log(produto, quantidade)
     };
 

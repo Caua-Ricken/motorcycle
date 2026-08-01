@@ -16,4 +16,7 @@ router.use('/movimentacao', movimentacaoRoutes);
 const pagamentoRoutes = require('./pagamentoRoutes');
 router.use('/pagamento', pagamentoRoutes);
 
+const usuarioRoutes = require('./usuariosRoutes');
+router.use('/usuario', usuarioRoutes);
+
 module.exports = router;
