@@ -16,32 +16,32 @@ Sistema Full Stack desenvolvido para gerenciamento e venda de motocicletas, cont
 
 ## Loja
 
-<img src="./FrontEnd/src/assets/loja.png">
 ![Loja](Motorcycle/FrontEnd/src/assets/loja.png)
 
 ---
 
 ## Página de Detalhes
 
-<img src="./FrontEnd/src/assets/detalhes.png">
+![Detalhes](Motorcycle/FrontEnd/src/assets/detalhes.png)
 
 ---
 
 ## Carrinho
 
-<img src="./FrontEnd/src/assets/carrinho.png">
+![Carrinho](Motorcycle/FrontEnd/src/assets/carrinho.png)
+
 
 ---
 
 ## Checkout
 
-<img src="./FrontEnd/src/assets/checkout.png">
+![Checkout](Motorcycle/FrontEnd/src/assets/checkout.png)
 
 ---
 
 ## Painel Administrativo
 
-<img src="./FrontEnd/src/assets/admin.png">
+![Admin](Motorcycle/FrontEnd/src/assets/admin.png)
 
 ---
 
