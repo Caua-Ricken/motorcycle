@@ -10,13 +10,14 @@ Sistema Full Stack desenvolvido para gerenciamento e venda de motocicletas, cont
 
 ## Tela de Login
 
-<img src="./FrontEnd/src/assets/login.png">
+![Login](Motorcycle/FrontEnd/src/assets/login.png)
 
 ---
 
 ## Loja
 
 <img src="./FrontEnd/src/assets/loja.png">
+![Loja](Motorcycle/FrontEnd/src/assets/loja.png)
 
 ---
 
