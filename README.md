@@ -10,37 +10,37 @@ Sistema Full Stack desenvolvido para gerenciamento e venda de motocicletas, cont
 
 ## Tela de Login
 
-<img src="./assets/login.png">
+<img src="./FrontEnd/src/assets/login.png">
 
 ---
 
 ## Loja
 
-<img src="./assets/loja.png">
+<img src="./FrontEnd/src/assets/loja.png">
 
 ---
 
 ## Página de Detalhes
 
-<img src="./assets/detalhes.png">
+<img src="./FrontEnd/src/assets/detalhes.png">
 
 ---
 
 ## Carrinho
 
-<img src="./assets/carrinho.png">
+<img src="./FrontEnd/src/assets/carrinho.png">
 
 ---
 
 ## Checkout
 
-<img src="./assets/checkout.png">
+<img src="./FrontEnd/src/assets/checkout.png">
 
 ---
 
 ## Painel Administrativo
 
-<img src="./assets/admin.png">
+<img src="./FrontEnd/src/assets/admin.png">
 
 ---
 
@@ -143,6 +143,7 @@ Motorcycle
 │   │
 │   ├── components
 │   ├── hooks
+│   ├── assets
 │   ├── pages
 │   └── contexts
 │
