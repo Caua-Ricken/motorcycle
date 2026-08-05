@@ -70,7 +70,7 @@ function App() {
           <span className="logo-icon">🚲</span>
 
           <div>
-            <h1>MotorCycle</h1>
+            <h1>Bikes Premium</h1>
             <p>Painel administrativo</p>
           </div>
         </div>
