@@ -2,8 +2,9 @@ const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const {Usuario} = require("../models/index");
 const {Op} = require("sequelize");
+require("dotenv").config();
 
-const JWT_SECRET = "dZiz1sr2HYGCE9Nn2WRTfTCbc1wFLAsZANuGkPG4mJg";
+const JWT_SECRET = process.env.JWT_SECRET || "default_secret";
 
 module.exports = {
 
