@@ -1,0 +1,251 @@
+.modal-cadastro-overlay {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: rgba(0, 0, 0, 0.6);
+
+  z-index: 1000;
+
+  padding: 20px;
+}
+
+.modal-cadastro {
+  position: relative;
+
+  width: 100%;
+  max-width: 450px;
+
+  background: #ffffff;
+
+  padding: 30px;
+
+  border-radius: 14px;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+
+  color: #10281c;
+
+  animation: abrirModal 0.2s ease;
+}
+
+/* Título */
+
+.modal-cadastro h2 {
+  margin: 0 0 8px;
+
+  color: #10281c;
+
+  font-size: 25px;
+}
+
+/* Texto abaixo do título */
+
+.modal-cadastro > p {
+  margin: 0 0 25px;
+
+  color: #6b7280;
+
+  font-size: 14px;
+}
+
+/* Botão fechar */
+
+.modal-cadastro-close {
+  position: absolute;
+
+  top: 12px;
+  right: 15px;
+
+  width: 35px;
+  height: 35px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+
+  border: none;
+
+  border-radius: 50%;
+
+  color: #10281c;
+
+  font-size: 25px;
+
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.modal-cadastro-close:hover {
+  background: #f3f4f6;
+}
+
+/* Formulário */
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+}
+
+/* Campos */
+
+.modal-cadastro .form-control {
+  display: flex;
+  flex-direction: column;
+
+  gap: 6px;
+}
+
+.modal-cadastro .form-control label {
+  color: #10281c;
+
+  font-size: 14px;
+  font-weight: 600;
+}
+
+/* Input */
+
+.modal-cadastro .form-control input,
+.modal-cadastro .form-control select {
+  width: 100%;
+
+  padding: 12px 14px;
+
+  background: #ffffff;
+
+  color: #1f2937;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 14px;
+
+  box-sizing: border-box;
+
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Placeholder */
+
+.modal-cadastro .form-control input::placeholder {
+  color: #9ca3af;
+}
+
+/* Focus mais claro */
+
+.modal-cadastro .form-control input:focus,
+.modal-cadastro .form-control select:focus {
+  border-color: #8fbd32;
+
+  box-shadow: 0 0 0 2px rgba(143, 189, 50, 0.15);
+
+  background: #ffffff;
+
+  color: #1f2937;
+}
+
+/* Select */
+
+.modal-cadastro .form-control select {
+  cursor: pointer;
+}
+
+/* Mensagens */
+
+.modal-cadastro .register-message {
+  padding: 10px 12px;
+
+  border-radius: 7px;
+
+  font-size: 14px;
+
+  text-align: center;
+}
+
+.modal-cadastro .register-message.error {
+  background: #fee2e2;
+
+  color: #b91c1c;
+
+  border: 1px solid #fecaca;
+}
+
+.modal-cadastro .register-message.success {
+  background: #dcfce7;
+
+  color: #166534;
+
+  border: 1px solid #bbf7d0;
+}
+
+/* Botão criar conta */
+
+.register-form > button[type="submit"] {
+  width: 100%;
+
+  padding: 13px;
+
+  margin-top: 5px;
+
+  background: #10281c;
+
+  color: #ffffff;
+
+  border: none;
+
+  border-radius: 8px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: background 0.2s;
+}
+
+.register-form > button[type="submit"]:hover {
+  background: #244c35;
+}
+
+.register-form > button[type="submit"]:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+/* Animação */
+
+@keyframes abrirModal {
+  from {
+    opacity: 0;
+
+    transform: translateY(-10px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 500px) {
+  .modal-cadastro {
+    padding: 25px 20px;
+  }
+
+  .modal-cadastro h2 {
+    font-size: 22px;
+  }
+}

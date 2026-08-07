@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import ModalCadastroUsuario from "../components/ModalCadastroUsuario";
 import "../../public/css/pagesCss/login.css";
 
 function Login() {
@@ -10,6 +11,7 @@ function Login() {
   const [mensagem, setMensagem] = useState("");
   const [loading, setLoading] = useState(false);
   const [sucesso, setSucesso] = useState(false);
+  const [open, setOpen] = useState(false);
 
 
   const fazerLogin = async (e) => {
@@ -163,9 +165,20 @@ function Login() {
             >
               {loading ? "Entrando..." : "Entrar"}
             </button>
+
+            <p className="login-register">
+  Não tem uma conta?
+  <button
+    type="button"
+    onClick={() => setOpen(true)}
+  >
+    Criar conta
+  </button>
+</p>
           </form>
         </div>
       </section>
+      <ModalCadastroUsuario open={open} onClose={() => setOpen(false)} />
     </main>
   );
 }
