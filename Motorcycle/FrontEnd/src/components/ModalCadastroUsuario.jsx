@@ -60,6 +60,7 @@ const ModalCadastroUsuario = ({ open, onClose }) => {
     setConfirmarSenha("");
 
     setTimeout(() => {
+      setMensagem("");
       onClose();
     }, 2000);
   };
