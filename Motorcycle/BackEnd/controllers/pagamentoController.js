@@ -27,9 +27,11 @@ module.exports = {
                 nome,
                 tipo,
                 descricao,
-                parcelasMaxima,
-                vencimento,
-                ativo,
+                parcelasMaxima: 
+                 tipo === "credito" ? Number(parcelasMaxima) : 1,
+                vencimento: 
+                 tipo === "boleto" ? Number(vencimento) : 1,
+                ativo: ativo ?? true,
             });
 
             return res.status(201).json({
